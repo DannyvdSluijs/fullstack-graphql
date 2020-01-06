@@ -1,15 +1,20 @@
 /**
  * Here are your Resolvers for your Schema. They must match
- * the type definitions in your scheama
+ * the type definitions in your schema
  */
 
 module.exports = {
   Query: {
-    
+    me (_, __, ctx) {
+      return ctx.models.User.findOne();
+    },
+    pets (_, __, ctx) {
+      return ctx.models.Pet.findMany({});
+    }
   },
-  Mutation: {
-    
-  },
+  // Mutation: {
+  //
+  // },
   Pet: {
     img(pet) {
       return pet.type === 'DOG'
@@ -18,6 +23,5 @@ module.exports = {
     }
   },
   User: {
-    
   }
 }

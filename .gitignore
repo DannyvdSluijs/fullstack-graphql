@@ -64,3 +64,6 @@ typings/
 dist
 coverage
 .cache
+
+# Editor specifics
+.idea
