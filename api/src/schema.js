@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server')
+const { gql } = require('apollo-server');
 
 /**
  * Type Definitions for our Schema using the SDL.
@@ -17,10 +17,20 @@ const typeDefs = gql`
         img: String!
     }
     
+    input PetId {
+        id: ID!
+    }
+    
+    input PetCollectionFilter {
+        name: String,
+        type: String
+    }
+    
     type Query {
         me: User!
-        pets: [Pet]!
+        pets(input: PetCollectionFilter): [Pet]!
+        pet(input: PetId): Pet
     }
 `;
 
-module.exports = typeDefs
+module.exports = typeDefs;
