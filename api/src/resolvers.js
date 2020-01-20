@@ -25,8 +25,14 @@ module.exports = {
       return pet.type === 'DOG'
         ? 'https://placedog.net/300/300'
         : 'http://placekitten.com/300/300'
+    },
+    owner(_, __, ctx) {
+      return ctx.user
     }
   },
   User: {
+    pets(_, __, ctx) {
+      return ctx.models.Pet.findMany()
+    }
   }
 }
